@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "name": "Launch BSL Support",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": ["--target", "lib/main.dart"]
+    }
+  ]
+}
