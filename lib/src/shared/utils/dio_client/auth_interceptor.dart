@@ -10,8 +10,7 @@ class AuthInterceptor extends Interceptor {
 
     if (rapidApiKey.isNotEmpty) {
       if (!options.headers.containsKey(HttpHeaders.authorizationHeader)) {
-        // todo(me): change header key
-        options.headers["x-auth-key"] = rapidApiKey;
+        options.headers["X-RapidAPI-Key"] = rapidApiKey;
       }
     }
 

@@ -10,8 +10,7 @@ class LiveSportInterceptor extends Interceptor {
 
     if (apiHost.isNotEmpty) {
       if (!options.headers.containsKey(HttpHeaders.authorizationHeader)) {
-        // todo(me): change header key
-        options.headers["x-auth-host"] = apiHost;
+        options.headers["X-RapidAPI-Host"] = apiHost;
       }
     }
 

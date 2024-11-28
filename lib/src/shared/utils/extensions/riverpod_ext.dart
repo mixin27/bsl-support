@@ -1,3 +1,4 @@
+import 'package:bsl_support/src/shared/utils/dio_client/dio_client.dart';
 import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -6,7 +7,7 @@ extension DebounceAndCancelExtension on Ref {
   /// which can be used to make a request.
   ///
   /// That client will automatically be closed when the provider is disposed.
-  Future<Dio> getDebouncedDefaultClient([Duration? duration]) async {
+  Future<Dio> getDebouncedFootballLiveHttpClient([Duration? duration]) async {
     // First, we handle debouncing.
     var didDispose = false;
     onDispose(() => didDispose = true);
@@ -22,19 +23,14 @@ extension DebounceAndCancelExtension on Ref {
     }
 
     // We now create the client and close it when the provider is disposed.
-    // final client = read(defaultDioClientProvider);
-    final client = Dio();
+    final client = read(footballLiveClientProvider);
     onDispose(client.close);
 
     // Finally, we return the client to allow our provider to make the request.
     return client;
   }
 
-  /// Wait for [duration] (defaults to 500ms), and then return a [http.Client]
-  /// which can be used to make a request.
-  ///
-  /// That client will automatically be closed when the provider is disposed.
-  Future<Dio> getDebouncedHighlightClient([Duration? duration]) async {
+  Future<Dio> getDebouncedLiveSportHttpClient([Duration? duration]) async {
     // First, we handle debouncing.
     var didDispose = false;
     onDispose(() => didDispose = true);
@@ -50,8 +46,7 @@ extension DebounceAndCancelExtension on Ref {
     }
 
     // We now create the client and close it when the provider is disposed.
-    // final client = read(highlightDioClientProvider);
-    final client = Dio();
+    final client = read(liveSportClientProvider);
     onDispose(client.close);
 
     // Finally, we return the client to allow our provider to make the request.

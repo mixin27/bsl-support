@@ -9,10 +9,14 @@ Future<void> appStartup(Ref ref) async {
   ref.onDispose(() {
     // ensure dependent providers are disposed as well
     // ref.invalidate(onboardingRepositoryProvider);
+    // ref.invalidate(getLiveSportsProvider);
+    // ref.invalidate(getAllFootballLiveProvider);
   });
   // await for all initialization code to be complete before returning
   await Future.wait([
     // ref.watch(onboardingRepositoryProvider.future),
+    // ref.watch(getLiveSportsProvider.future),
+    // ref.watch(getAllFootballLiveProvider.future),
   ]);
 }
 

@@ -1,4 +1,5 @@
-import 'package:bsl_support/src/features/home/presentation/home_screen.dart';
+import 'package:bsl_support/src/features/football_live/presentation/football_live_screen.dart';
+import 'package:bsl_support/src/features/live_sport/presentation/live_sport_screen.dart';
 import 'package:bsl_support/src/routes/app_startup.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +13,13 @@ part 'app_router.g.dart';
 
 // private navigators
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
-final _homeNavigatorKey = GlobalKey<NavigatorState>();
+final _liveSportApiNavigatorKey = GlobalKey<NavigatorState>();
+final _footballLiveApiNavigatorKey = GlobalKey<NavigatorState>();
 final _settingsNavigatorKey = GlobalKey<NavigatorState>();
 
 enum AppRoute {
-  home,
+  liveSportApi,
+  footballLiveApi,
   settings,
 }
 
@@ -59,13 +62,27 @@ GoRouter goRouter(Ref ref) {
         ),
         branches: [
           StatefulShellBranch(
-            navigatorKey: _homeNavigatorKey,
+            navigatorKey: _liveSportApiNavigatorKey,
             routes: [
               GoRoute(
                 path: '/',
-                name: AppRoute.home.name,
+                name: AppRoute.liveSportApi.name,
+                pageBuilder: (context, state) {
+                  return const NoTransitionPage(
+                    child: LiveSportScreen(),
+                  );
+                },
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: _footballLiveApiNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/football-live-api',
+                name: AppRoute.footballLiveApi.name,
                 pageBuilder: (context, state) => const NoTransitionPage(
-                  child: HomeScreen(),
+                  child: FootballLiveScreen(),
                 ),
               ),
             ],

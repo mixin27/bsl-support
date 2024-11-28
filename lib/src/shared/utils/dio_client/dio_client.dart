@@ -12,7 +12,7 @@ import 'live_sport_interceptor.dart';
 part 'dio_client.g.dart';
 
 @riverpod
-Dio footballLiveApiClient(Ref ref) {
+Dio footballLiveClient(Ref ref) {
   final baseUrl = Env.footballLiveApiUrl;
   final dio = Dio()
     ..options = BaseOptions(
@@ -36,7 +36,7 @@ Dio footballLiveApiClient(Ref ref) {
 }
 
 @riverpod
-Dio liveSportApiClient(Ref ref) {
+Dio liveSportClient(Ref ref) {
   final baseUrl = Env.liveSportApiUrl;
   final dio = Dio()
     ..options = BaseOptions(
