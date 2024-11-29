@@ -1,8 +1,10 @@
 import 'package:bsl_support/src/features/live_sport/domain/live_sport_model.dart';
+import 'package:bsl_support/src/routes/app_router.dart';
 import 'package:bsl_support/src/shared/utils/extensions/flutter_extensions.dart';
 import 'package:bsl_support/src/shared/utils/format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class LiveSportView extends ConsumerWidget {
@@ -109,6 +111,20 @@ class LiveSportView extends ConsumerWidget {
                       icon: const Icon(Icons.copy_outlined),
                     ),
                   ],
+                ),
+              ),
+              const SizedBox(height: 16.0),
+              SizedBox(
+                width: double.infinity,
+                child: TextButton.icon(
+                  onPressed: () {
+                    context.pushNamed(
+                      AppRoute.videoPlayer.name,
+                      queryParameters: {"url": itemData.m3u8Source},
+                    );
+                  },
+                  label: const Text("Play"),
+                  icon: const Icon(Icons.play_circle_outline),
                 ),
               ),
             ],

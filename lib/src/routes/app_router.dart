@@ -1,5 +1,6 @@
 import 'package:bsl_support/src/features/football_live/presentation/football_live_screen.dart';
 import 'package:bsl_support/src/features/live_sport/presentation/live_sport_screen.dart';
+import 'package:bsl_support/src/features/video_player/presentation/video_player_screen.dart';
 import 'package:bsl_support/src/routes/app_startup.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ enum AppRoute {
   liveSportApi,
   footballLiveApi,
   settings,
+  videoPlayer,
 }
 
 @riverpod
@@ -55,6 +57,16 @@ GoRouter goRouter(Ref ref) {
             onLoaded: (_) => const SizedBox.shrink(),
           ),
         ),
+      ),
+      GoRoute(
+        path: '/player',
+        name: AppRoute.videoPlayer.name,
+        pageBuilder: (context, state) {
+          final url = state.uri.queryParameters['url'];
+          return NoTransitionPage(
+            child: VideoPlayerScreen(url: url ?? ''),
+          );
+        },
       ),
       StatefulShellRoute.indexedStack(
         pageBuilder: (context, state, navigationShell) => NoTransitionPage(
