@@ -60,6 +60,11 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
         selectedIndex: currentIndex,
         destinations: const [
           NavigationDestination(
+            icon: Icon(Icons.live_tv),
+            selectedIcon: Icon(Icons.live_tv_outlined),
+            label: 'Live TVs',
+          ),
+          NavigationDestination(
             icon: Icon(Icons.sports),
             selectedIcon: Icon(Icons.sports_outlined),
             label: 'Live Sport',
@@ -102,6 +107,11 @@ class ScaffoldWithNavigationRail extends StatelessWidget {
             onDestinationSelected: onDestinationSelected,
             labelType: NavigationRailLabelType.all,
             destinations: const <NavigationRailDestination>[
+              NavigationRailDestination(
+                icon: Icon(Icons.live_tv),
+                selectedIcon: Icon(Icons.live_tv_outlined),
+                label: Text('Live TVs'),
+              ),
               NavigationRailDestination(
                 icon: Icon(Icons.sports),
                 selectedIcon: Icon(Icons.sports_outlined),

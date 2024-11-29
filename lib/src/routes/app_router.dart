@@ -1,5 +1,6 @@
 import 'package:bsl_support/src/features/football_live/presentation/football_live_screen.dart';
 import 'package:bsl_support/src/features/live_sport/presentation/live_sport_screen.dart';
+import 'package:bsl_support/src/features/live_tv/presentation/live_tv_screen.dart';
 import 'package:bsl_support/src/features/video_player/presentation/video_player_screen.dart';
 import 'package:bsl_support/src/routes/app_startup.dart';
 import 'package:flutter/foundation.dart';
@@ -17,12 +18,14 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _liveSportApiNavigatorKey = GlobalKey<NavigatorState>();
 final _footballLiveApiNavigatorKey = GlobalKey<NavigatorState>();
 final _settingsNavigatorKey = GlobalKey<NavigatorState>();
+final _liveTvNavigatorKey = GlobalKey<NavigatorState>();
 
 enum AppRoute {
   liveSportApi,
   footballLiveApi,
   settings,
   videoPlayer,
+  liveTv,
 }
 
 @riverpod
@@ -32,7 +35,7 @@ GoRouter goRouter(Ref ref) {
 
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/',
+    initialLocation: '/tvs',
     debugLogDiagnostics: !kReleaseMode,
     redirect: (context, state) {
       // If the app is still initializing, show the /startup route
@@ -42,7 +45,7 @@ GoRouter goRouter(Ref ref) {
 
       final path = state.uri.path;
       if (path.startsWith('/startup')) {
-        return '/';
+        return '/tvs';
       }
 
       return null;
@@ -74,10 +77,22 @@ GoRouter goRouter(Ref ref) {
         ),
         branches: [
           StatefulShellBranch(
+            navigatorKey: _liveTvNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/tvs',
+                name: AppRoute.liveTv.name,
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: LiveTvScreen(),
+                ),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
             navigatorKey: _liveSportApiNavigatorKey,
             routes: [
               GoRoute(
-                path: '/',
+                path: '/live-sport',
                 name: AppRoute.liveSportApi.name,
                 pageBuilder: (context, state) {
                   return const NoTransitionPage(
