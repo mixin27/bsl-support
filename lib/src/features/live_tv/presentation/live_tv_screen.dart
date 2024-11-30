@@ -30,6 +30,10 @@ class LiveTvScreen extends ConsumerWidget {
               final tv = data[index];
               return ListTile(
                 onTap: () {
+                  // final uri = Uri(
+                  //   path: '/player',
+                  //   queryParameters: {"url": tv.url},
+                  // );
                   context.pushNamed(
                     AppRoute.videoPlayer.name,
                     queryParameters: {"url": tv.url},
