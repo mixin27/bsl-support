@@ -34,5 +34,5 @@ endif
 	
 	@echo "✅ Finished deploy: $(GITHUB_REPO)"
 	@echo "🚀 Flutter web URL: https://$(GITHUB_USER).github.io/$(OUTPUT)/"
-	
+
 .PHONY: deploy
