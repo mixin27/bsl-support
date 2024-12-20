@@ -58,3 +58,25 @@ Dio liveSportClient(Ref ref) {
     ]);
   return dio;
 }
+
+@riverpod
+Dio socoLiveClient(Ref ref) {
+  final baseUrl = Env.bslApi;
+  final dio = Dio()
+    ..options = BaseOptions(
+      baseUrl: baseUrl,
+      headers: {
+        Headers.acceptHeader: Headers.jsonContentType,
+        Headers.contentTypeHeader: Headers.jsonContentType,
+      },
+    )
+    ..interceptors.addAll([
+      if (!kReleaseMode)
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseHeader: true,
+        ),
+    ]);
+  return dio;
+}

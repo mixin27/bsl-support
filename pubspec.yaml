@@ -1,7 +1,7 @@
 name: bsl_support
 description: "A new Flutter project."
 publish_to: "none"
-version: 1.0.1+2
+version: 1.0.2+3
 
 environment:
   sdk: ^3.5.4
@@ -30,6 +30,7 @@ dependencies:
   intl: ^0.19.0
   envied: ^1.0.0
   google_fonts: ^6.2.1
+  cached_network_image: ^3.4.1
   
 
 dev_dependencies:

@@ -107,7 +107,7 @@ class LiveSportView extends ConsumerWidget {
                           backgroundColor: Theme.of(context)
                               .colorScheme
                               .onPrimaryContainer
-                              .withOpacity(0.3)),
+                              .withValues(alpha: 0.3)),
                       icon: const Icon(Icons.copy_outlined),
                     ),
                   ],

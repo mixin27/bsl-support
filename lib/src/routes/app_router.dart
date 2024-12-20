@@ -1,6 +1,7 @@
 import 'package:bsl_support/src/features/football_live/presentation/football_live_screen.dart';
 import 'package:bsl_support/src/features/live_sport/presentation/live_sport_screen.dart';
 import 'package:bsl_support/src/features/live_tv/presentation/live_tv_screen.dart';
+import 'package:bsl_support/src/features/soco_live/presentation/soco_live_screen.dart';
 import 'package:bsl_support/src/features/video_player/presentation/video_player_screen.dart';
 import 'package:bsl_support/src/routes/app_startup.dart';
 import 'package:flutter/foundation.dart';
@@ -26,6 +27,7 @@ enum AppRoute {
   settings,
   videoPlayer,
   liveTv,
+  socoLive,
 }
 
 @riverpod
@@ -118,14 +120,10 @@ GoRouter goRouter(Ref ref) {
             navigatorKey: _settingsNavigatorKey,
             routes: [
               GoRoute(
-                path: '/settings',
-                name: AppRoute.settings.name,
-                pageBuilder: (context, state) => NoTransitionPage(
-                  child: Scaffold(
-                    appBar: AppBar(
-                      title: const Text("Settings"),
-                    ),
-                  ),
+                path: '/soco-lives',
+                name: AppRoute.socoLive.name,
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: SocoLiveScreen(),
                 ),
               ),
             ],

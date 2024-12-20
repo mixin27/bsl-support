@@ -17,4 +17,7 @@ abstract class Env {
 
   @EnviedField(varName: 'RAPID_API_KEY', obfuscate: true)
   static final String rapidApiKey = _Env.rapidApiKey;
+
+  @EnviedField(varName: 'BSL_API', obfuscate: true)
+  static final String bslApi = _Env.bslApi;
 }
